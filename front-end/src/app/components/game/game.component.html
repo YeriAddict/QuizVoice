@@ -1,0 +1,122 @@
+<div id="error" *ngIf="!this.isLoggedIn; else game">
+    <h1>Veuillez vous connecter pour accéder à ce contenu</h1>
+</div>
+
+<ng-template #game>
+
+    <div *ngIf="!this.gameStarted; else start">
+        <mat-card class="width-50 ml-25 mr-25 mt-8"
+            style="display: flex; flex-direction: row; justify-content: space-around; height: 30vh; align-items: center;">
+            <mat-card-content style="margin: 20px; text-align: center;">
+                <h1>Jouer avec des thèmes aléatoires</h1>
+                <button mat-raised-button color="primary" (click)="getQuestion(true)">Jouer</button>
+            </mat-card-content>
+            <div style="border:solid 1px #C5C5C5; margin: 20px 0px; min-height: -webkit-fill-available;"></div>
+            <mat-card-content style="display: flex; flex-direction: column; margin:20px; text-align: center;">
+                <h1>Jouer avec un thème spécifique</h1>
+                <mat-form-field appearance="fill">
+                    <mat-label>Thèmes</mat-label>
+                    <mat-select [formControl]="themeControl" required>
+                        <mat-option *ngFor="let theme of this.themes" [value]="theme">
+                            {{theme}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <button mat-raised-button color="primary" [disabled]="themeControl.invalid"
+                    (click)="getQuestion(false)">Jouer en aléatoire</button>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <ng-template #start>
+        <div *ngIf="!this.gameEnded; else ended">
+            <mat-card class="width-50 ml-25 mr-25 mt-8">
+                <div
+                    style="text-transform: uppercase; font-weight: bold; background-color: #3f51b5; color: white; font-size: 20px; padding: 15px; text-align: center;">
+                    {{this.question_actual.name}}
+                </div>
+                <mat-card-header class="text-center mb-5">
+
+                    <mat-card-title style="text-align: center;">{{ this.question_actual.question }}</mat-card-title>
+                </mat-card-header>
+
+
+                <div class="" *ngIf="four_answer; else ouinon" id="question4">
+                    <mat-grid-list cols="2" rowHeight="5:1">
+                        <mat-grid-tile>
+                            <button mat-flat-button matBadge="1" matBadgePosition="before" matBadgeSize="large"
+                                matBadgeColor="accent" color="primary" class="">{{
+                                this.question_actual.answer1
+                                }}
+                            </button>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <button mat-flat-button matBadge="2" matBadgePosition="before" matBadgeSize="large"
+                                matBadgeColor="accent" color="primary" class="">{{
+                                this.question_actual.answer2
+                                }}
+                            </button>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <button mat-flat-button matBadge="3" matBadgePosition="before" matBadgeSize="large"
+                                matBadgeColor="accent" color="primary" class="">{{
+                                this.question_actual.answer3
+                                }}
+                            </button>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <button mat-flat-button matBadge="4" matBadgePosition="before" matBadgeSize="large"
+                                matBadgeColor="accent" color="primary" class="">{{
+                                this.question_actual.answer4
+                                }}
+                            </button>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+                </div>
+
+                <ng-template #ouinon>
+                    <div id="question2">
+                        <mat-grid-list cols="2" rowHeight="5:1">
+                            <mat-grid-tile>
+                                <button mat-flat-button color="primary" class="">{{
+                                    this.question_actual.answer1
+                                    }}
+                                </button>
+                            </mat-grid-tile>
+                            <mat-grid-tile>
+                                <button mat-flat-button color="primary" class="">{{
+                                    this.question_actual.answer2
+                                    }}
+                                </button>
+                            </mat-grid-tile>
+                        </mat-grid-list>
+                    </div>
+                </ng-template>
+
+                <div style="text-align:center;margin: 20px 0;">
+                    <button (click)="instantAnswer()" mat-raised-button *ngIf="!recording"
+                        style="background-color: green;color: white;font-size: 20px;">Enregistrement de la réponse dans {{ timeLeft }} sec.
+                    </button>
+                    <button mat-raised-button *ngIf="recording"
+                        style="background-color: red;color: white;font-size: 20px;">Fin de l'enregistrement dans {{ timeLeft }} sec.
+                    </button>
+                    
+                </div>
+            </mat-card>
+        </div>
+        <ng-template #ended>
+            <mat-card class="width-50 ml-25 mr-25 mt-8">
+                <mat-card-header class="text-center mb-5">
+                    <mat-card-title style="text-align: center;">Score Final</mat-card-title>
+                </mat-card-header>
+                <mat-card-content style="text-align: center;">
+                    <h1 class="mat-headline-4">
+                        {{this.finalScore}}
+                    </h1>
+                </mat-card-content>
+                <button mat-raised-button color="primary" (click)="restart()" style="margin-top: 10px;">Rejouer</button>
+            </mat-card>
+        </ng-template>
+
+    </ng-template>
+</ng-template>

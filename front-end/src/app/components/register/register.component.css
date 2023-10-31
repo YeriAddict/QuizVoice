@@ -1,0 +1,14 @@
+.flex-container{display: flex; align-items: center;}
+.text-center{justify-content: center;}
+.padding-10{padding: 10px;}
+.width-50{width: 50%;}
+.width-70{width: 70%;}
+.width-100{width: 100%;}
+.ml-15{margin-left: 15%;}
+.ml-25{margin-left: 25%;}
+.mr-15{margin-right: 15%;}
+.mr-25{margin-right: 25%;}
+.mt-3{margin-top: 3%;}
+.mb-5{margin-bottom: 5%;}
+.mb-20px{margin-bottom: 20px;}
+.mat-icon{vertical-align: middle;}

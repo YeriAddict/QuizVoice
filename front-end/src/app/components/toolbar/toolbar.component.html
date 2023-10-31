@@ -1,0 +1,44 @@
+<mat-toolbar color="primary">
+
+    <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+    </button>
+
+    <span>Quiz Game</span>
+    <span class="spacer"></span>
+
+    <mat-menu #menu="matMenu">
+        <button *ngIf="!this.isLoggedIn" mat-menu-item routerLink="login" routerLinkActive="active">
+            Se connecter<mat-icon>login</mat-icon>
+        </button>
+
+        <button *ngIf="!this.isLoggedIn" mat-menu-item routerLink="register" routerLinkActive="active">
+            S'inscrire<mat-icon>how_to_reg</mat-icon>
+        </button>
+
+        <button *ngIf="this.isLoggedIn" mat-menu-item routerLink="game" routerLinkActive="active">
+            Jouer<mat-icon>videogame_asset</mat-icon>
+        </button>
+
+        <button *ngIf="this.isLoggedIn" mat-menu-item routerLink="profile" routerLinkActive="active">
+            Profil<mat-icon>person</mat-icon>
+        </button>
+
+        <button mat-menu-item routerLink="leaderboard" routerLinkActive="active">
+            Classement<mat-icon>star</mat-icon>
+        </button>
+
+        <button *ngIf="this.isLoggedIn" mat-menu-item (click)="logout()" routerLinkActive="active">
+            Se Déconnecter<mat-icon>logout</mat-icon>
+        </button>
+    </mat-menu>
+
+    <a button mat-icon-button>
+        <mat-icon>favorite</mat-icon>
+    </a>
+
+    <a button mat-icon-button>
+        <mat-icon>share</mat-icon>
+    </a>
+
+</mat-toolbar>

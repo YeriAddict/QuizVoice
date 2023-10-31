@@ -1,0 +1,81 @@
+.flex-container {
+  display: flex;
+  align-items: center;
+}
+
+.text-center {
+  justify-content: center;
+}
+
+.width-15 {
+  width: 15%;
+}
+
+.width-35 {
+  width: 35%;
+}
+
+.width-50 {
+  width: 50%;
+}
+
+.width-70 {
+  width: 70%;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.ml-8 {
+  margin-left: 8%;
+}
+
+.ml-10 {
+  margin-left: 10%;
+}
+
+.ml-25 {
+  margin-left: 25%;
+}
+
+.mr-8 {
+  margin-right: 8%;
+}
+
+.mr-10 {
+  margin-right: 10%;
+}
+
+.mr-25 {
+  margin-right: 25%;
+}
+
+.mt-8 {
+  margin-top: 8%;
+}
+
+.mb-2 {
+  margin-bottom: 2%;
+}
+
+.mb-5 {
+  margin-bottom: 5%;
+}
+
+
+#error {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#question4 button {
+  min-width: 15vw;
+}
+
+#question2 button {
+  min-width: 15vw;
+}

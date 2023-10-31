@@ -1,0 +1,67 @@
+GET /get_leaderboard?size=10
+
+Retourne le Tableau des "size" meilleurs joueurs
+
+Forme de la réponse:
+[{"nametag":"test","score":3},{"nametag":"test2","score":2}]
+Avec nametag le pseudo de la personne
+
+--------------------------------
+
+GET /get_score?user=username
+
+Retourne le score de l'utilisateur "username"
+
+Forme de la réponse:
+{"score":2}
+
+--------------------------------
+
+POST /answer_question
+
+Body:
+{"user":"username","answer":id}
+
+Permet à l'utilisateur "username" de répondre à la question en cours avec la réponse "id" (de 1 à 4)
+
+Forme de la réponse:
+{"result":"good"}  Si l'utilisateur répond bien à la question
+{"result":"bad"} Si l'utilisateur répond mal à la question
+{"result":"no_question"} Si l'utilisateur envoie cette requête alors qu'aucune question n'était en cours
+
+--------------------------------
+
+POST /get_question
+
+Body:
+{"user":"username"}
+OU
+{"user":"username","theme":"themechoisi"}
+
+Permet à l'utilisateur "username" d'obtenir une question dans le theme "themechoisi" ou sans theme particulier
+
+Exemple de forme de la réponse:
+{"id":2,"name":"Filières","question":"Le cursus Info/Reseau est-il le GOAT ?","question_type":1,"answer1":"Oui","answer2":"Non","answer3":"","answer4":""}
+
+Remarque: Ici il s'agit d'un Oui/Non donc les réponses 3 et 4 sont vide
+
+question_type 1 indique qu'il s'agit d'un Oui/Non
+question_type 2 indique qu'il s'agit d'une question avec 4 réponses possibles
+Ca peut servir pour le front
+
+name correspond au domaine de la question (Politique, Science, ...)
+
+question est la question
+
+Et les différentes answer (de 1 à 4) correspondent aux réponses possibles à afficher
+
+La bonne réponse n'est stockée que sur le back.
+
+--------------------------------
+
+GET /get_themes
+
+Exemple de réponse:
+["Présidents","Filières","Science"]
+
+Permet de récupérer les différents thèmes des questions actuellement dans la BDD

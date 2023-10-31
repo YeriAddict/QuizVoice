@@ -1,0 +1,44 @@
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.text-center {
+  justify-content: center;
+}
+
+.width-50 {
+  width: 50%;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.ml-25 {
+  margin-left: 25%;
+}
+
+.mr-25 {
+  margin-right: 25%;
+}
+
+.mt-8 {
+  margin-top: 8%;
+}
+
+.mb-5 {
+  margin-bottom: 5%;
+}
+
+#error {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

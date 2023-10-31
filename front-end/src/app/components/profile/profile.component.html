@@ -1,0 +1,28 @@
+<div id="error" *ngIf="!this.isLoggedIn; else default">
+    <h1>Veuillez vous connecter pour accéder à ce contenu</h1>
+</div>
+<ng-template #default>
+    <mat-card class="width-50 ml-25 mr-25 mt-8">
+
+        <mat-card-header class="text-center" style="padding-top:50px; background-color: #3f51b5 ; color:white">
+            <mat-card-title class="mat-headline-3">Profil de {{this.user.username}}</mat-card-title>
+        </mat-card-header>
+
+        <div class="width-100"
+            style="display: flex; flex-direction: row; place-content: space-around; margin-top: 50px;">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <mat-label class="mat-body">Pays</mat-label>
+                <p class="mat-headline-4">{{this.user.country}}</p>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <mat-label>Score</mat-label>
+                <p class="mat-headline-4">{{this.user.score}}</p>
+
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <mat-label>Classement</mat-label>
+                <p class="mat-headline-4">{{this.user.ranking}}</p>
+            </div>
+        </div>
+    </mat-card>
+</ng-template>
